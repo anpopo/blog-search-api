@@ -9,3 +9,17 @@ server:
 spring:
   application:
     name: blog-search-api
+
+feign:
+  url:
+    prefix: "https://dapi.kakao.com"
+  api:
+    key:
+      kakao: "a6e103182d0df70ff2689ba5d4b67ee3"
+  client:
+    config:
+      kakaoFeignClient:
+        connectTimeout: 1000
+        readTimeout: 1000
+        loggerLevel: HEADERS
+
