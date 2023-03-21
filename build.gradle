@@ -1,46 +1,52 @@
-buildscript {
-    ext {
-        springBootVersion = '3.0.4'
-        dependencyManagementPluginVersion = '1.0.11.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        dependencies {
-            classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-            classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}"
-        }
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = 'dev.blog.search'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 17
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
     }
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
+repositories {
+    mavenCentral()
+}
 
-    group = 'dev.blog.search'
-    version = '0.0.1-SNAPSHOT'
-    sourceCompatibility = 17
+ext {
+    set('testcontainersVersion', "1.17.6")
+    set('springCloudVersion', "2022.0.1")
+}
 
-    configurations {
-        compileOnly {
-            extendsFrom annotationProcessor
-        }
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
+}
 
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        annotationProcessor 'org.projectlombok:lombok'
-        implementation 'org.projectlombok:lombok'
-        testCompileOnly 'org.projectlombok:lombok'
-        testAnnotationProcessor 'org.projectlombok:lombok'
-    }
-
-    test {
-        useJUnitPlatform()
-    }
+test {
+    useJUnitPlatform()
 }
