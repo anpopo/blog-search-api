@@ -16,7 +16,7 @@
 ***
 ## API 명세
 
-http://localhost:8080/api/blog/search - 블로그 검색
+http://localhost:8080/api/blog/search?query=test - 블로그 검색
 
 http://localhost:8080/api/blog/search/keyword/rank - 랭킹 조회
 
