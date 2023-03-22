@@ -16,8 +16,9 @@
 ***
 ## API 명세
 
-http://localhost:8080/api/blog/search - 검색
-http://localhost:8080/api/blog/search/keyword/rank - 랭킹
+http://localhost:8080/api/blog/search - 블로그 검색
+
+http://localhost:8080/api/blog/search/keyword/rank - 랭킹 조회
 
 ### 1. Blog 검색
 - URL: /api/blog/search
