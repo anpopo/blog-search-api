@@ -15,6 +15,10 @@
 - java -jar blog-search-api-0.0.1-SNAPSHOT.jar
 ***
 ## API 명세
+
+http://localhost:8080/api/blog/search - 검색
+http://localhost:8080/api/blog/search/keyword/rank - 랭킹
+
 ### 1. Blog 검색
 - URL: /api/blog/search
 - Method: GET
