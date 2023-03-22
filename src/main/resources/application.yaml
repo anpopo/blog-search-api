@@ -19,7 +19,7 @@ feign:
     prefix: "https://dapi.kakao.com"
   api:
     key:
-      kakao: "a6e103182d0df70ff2689ba5d4b67ee3"
+      kakao: a6e103182d0df70ff2689ba5d4b67ee3
   client:
     config:
       kakaoFeignClient:

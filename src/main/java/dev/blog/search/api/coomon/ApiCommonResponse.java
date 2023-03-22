@@ -1,9 +1,9 @@
-package dev.blog.search.api.response;
+package dev.blog.search.api.coomon;
 
 import dev.blog.search.api.enums.CustomResponseCode;
+import java.io.Serializable;
 
-
-public record ApiCommonResponse<T>(T data, String customCode, String message) {
+public record ApiCommonResponse<T> (T data, String customCode, String message) implements Serializable {
 
     public static <T> ApiCommonResponse<T> createError(final String customCode, final String message) {
         return new ApiCommonResponse<>(null, customCode, message);

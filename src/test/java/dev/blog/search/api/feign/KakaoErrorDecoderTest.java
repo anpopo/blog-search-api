@@ -1,8 +1,8 @@
 package dev.blog.search.api.feign;
 
+import dev.blog.search.api.enums.CustomResponseCode;
 import dev.blog.search.api.exception.ApiCommonException;
 import dev.blog.search.api.feign.decoder.KakaoErrorDecoder;
-import dev.blog.search.api.enums.CustomResponseCode;
 import feign.Request;
 import feign.Request.HttpMethod;
 import feign.Response;

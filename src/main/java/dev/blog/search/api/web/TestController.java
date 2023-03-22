@@ -1,7 +1,7 @@
 package dev.blog.search.api.web;
 
-import dev.blog.search.api.exception.ApiCommonException;
 import dev.blog.search.api.enums.CustomResponseCode;
+import dev.blog.search.api.exception.ApiCommonException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/health")
-    public String health() {
-        return "OK";
+    public Long health() {
+        return 1L;
     }
 
     @GetMapping("/unhealthy")

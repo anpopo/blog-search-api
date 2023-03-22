@@ -3,18 +3,18 @@ package dev.blog.search.api.Integration;
 import dev.blog.search.api.exception.ApiCommonException;
 import dev.blog.search.api.service.BlogSearchService;
 import dev.blog.search.api.web.dto.req.BlogSearchRequestDto;
+import dev.blog.search.api.web.dto.res.BlogSearchRankResponseDto;
 import dev.blog.search.api.web.dto.res.BlogSearchResponseDto;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
-@SpringBootTest
-public class BlogSearchServiceTest {
+public class BlogSearchServiceTest extends AbstractIntegrationContainerTest {
 
     @Autowired
     private BlogSearchService blogSearchService;
@@ -47,5 +47,23 @@ public class BlogSearchServiceTest {
         // when && then
         Assertions.assertThatThrownBy(() -> blogSearchService.getBlogsByCondition(blogSearchRequestDto))
             .isInstanceOf(ApiCommonException.class);
+    }
+
+
+    @DisplayName("rank 확인 시 redis 의 적절한 자료구조를 가져와서 반환한다.")
+    @Test
+    void givenSize_whenGetBlogSearchKeywordRank_thenEmptyList() {
+        // given
+        int size = 10;
+        BlogSearchRequestDto blogSearchRequestDto = new BlogSearchRequestDto();
+        blogSearchRequestDto.setQuery("test");
+        blogSearchService.getBlogsByCondition(blogSearchRequestDto);
+
+
+        // when
+        List<BlogSearchRankResponseDto> response = blogSearchService.getBlogSearchKeywordRank(size);
+
+        // then
+        Assertions.assertThat(response).isNotNull().isNotEmpty();
     }
 }

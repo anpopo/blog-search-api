@@ -1,6 +1,6 @@
 package dev.blog.search.api.exception;
 
-import dev.blog.search.api.response.ApiCommonResponse;
+import dev.blog.search.api.coomon.ApiCommonResponse;
 import dev.blog.search.api.enums.CustomResponseCode;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
