@@ -19,19 +19,20 @@
 - URL: /api/blog/search
 - Method: GET
 - Request Parameter
-    - query: 검색 키워드
-    - sort: 정렬 방식
-      - accuracy: 정확도순 (기본)
-      - recency: 최신순
-    - page: 페이지 번호
-    - size: 페이지 사이즈
+    - |query parameter|description|비고|
+      |------|---|---|
+      |query|검색 키워드|**필수**|
+      |sort|정렬 방식|accuracy: 정확도순 (기본), recency: 최신순|
+      |page|페이지 번호|기본값: 1|
+      |size|페이지 사이즈|기본값: 10|
 
 ### 2. Ranking 조회
 - URL: /api/blog/search/keyword/rank
 - Method: GET
 - Request Parameter
-    - size: ranking 구간
-      - 10 ~ 1000 (기본: 10)
+  - |query parameter|description|비고|
+          |------|---|---|
+    |size|조회할 ranking 수|10 ~ 1000 (기본: 10)|
 
 ***
 ## 추가 의존성
