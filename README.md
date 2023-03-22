@@ -31,7 +31,7 @@
 - Method: GET
 - Request Parameter
   - |query parameter|description|비고|
-          |------|---|---|
+    |------|---|---|
     |size|조회할 ranking 수|10 ~ 1000 (기본: 10)|
 
 ***
