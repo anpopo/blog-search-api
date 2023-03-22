@@ -48,5 +48,7 @@ http://localhost:8080/api/blog/search/keyword/rank - 랭킹 조회
 - spring-data-redis: 3.0.4
   - 검색어 저장 및 검색어 count 증가는 I/O Bound 작업으로 판단
   - 따라서, 관계형 데이터베이스보다 Redis 를 사용하는 것이 더 적합하다고 판단
+- openfeign: 12.1
+  - 카카오 블로그 검색 api 호출을 위한 client
 
 
